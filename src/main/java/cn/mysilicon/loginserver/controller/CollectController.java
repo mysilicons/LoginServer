@@ -15,14 +15,14 @@ import java.util.Map;
 
 
 @RestController
-public class OrderController {
+public class CollectController {
     @Resource
     private CollectionMapper collectionMapper;
 
     @GetMapping("/orders")
     public String getOrders() {
         List<ShopData> shopDataList = collectionMapper.selectAll();
-        for (int i = shopDataList.size()-1; i >= 0; i--) {
+        for (int i = shopDataList.size() - 1; i >= 0; i--) {
             if (shopDataList.get(i).getCartlist().size() == 0)
                 shopDataList.remove(i);
         }
@@ -36,11 +36,6 @@ public class OrderController {
     @PostMapping("/orders/add")
     public void addCollect(@Param("id") Integer id) {
         collectionMapper.addCollect(id);
-    }
-
-    @PostMapping("/orders/delete")
-    public void deleteCollect(@Param("id") Integer id) {
-        collectionMapper.deleteCollect(id);
     }
 
 }

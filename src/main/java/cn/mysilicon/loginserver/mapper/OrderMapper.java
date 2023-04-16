@@ -1,9 +1,7 @@
 package cn.mysilicon.loginserver.mapper;
 
 import cn.mysilicon.loginserver.entity.Order;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -20,4 +18,11 @@ public interface OrderMapper {
 
     @Select("SELECT * FROM my_orders")
     List<Order> selectAll();
+
+    @Delete("DELETE FROM my_orders WHERE id=#{id}")
+    void delete(Integer id);
+
+    @Update("UPDATE my_orders SET cur_status='已完成' WHERE id=#{id}")
+    void finish(Integer id);
+
 }

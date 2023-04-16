@@ -18,7 +18,7 @@ public class BuyController {
     OrderMapper orderMapper;
 
     @PostMapping("/myorders/buy")
-    public void buy(@Param("product_id")Integer product_id) {
+    public void buy(@Param("product_id") Integer product_id) {
         orderMapper.buy(product_id);
     }
 
@@ -26,5 +26,15 @@ public class BuyController {
     public String getAll() {
         List<Order> orderList = orderMapper.selectAll();
         return JSON.toJSONString(orderList);
+    }
+
+    @PostMapping("/myorders/delete")
+    public void delete(@Param("id") Integer id) {
+        orderMapper.delete(id);
+    }
+
+    @PostMapping("/myorders/finish")
+    public void finish(@Param("id") Integer id) {
+        orderMapper.finish(id);
     }
 }

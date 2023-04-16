@@ -14,4 +14,7 @@ public interface ServiceListMapper {
 
     @Select("SELECT id,  image_url, title, content, price FROM service_list WHERE id=#{id}")
     List<Detail> selectById(Integer id);
+
+    @Select("SELECT * FROM service_list")
+    List<ServiceList> selectAll();
 }
