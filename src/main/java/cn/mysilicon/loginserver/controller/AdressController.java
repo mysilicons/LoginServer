@@ -18,16 +18,25 @@ public class AdressController {
     @Resource
     AddressMapper addressMapper;
 
-    @RequestMapping("/get")
+    @RequestMapping("/list")
     public String getAddress(@Param("user") Integer uid) {
         List<Address> addressesList = addressMapper.getAddressById(uid);
         Gson gson = new Gson();
-        String addressJson = gson.toJson(addressesList);
-        return addressJson;
+        return gson.toJson(addressesList);
     }
 
     @PostMapping("/add")
-    public void AdressController(@RequestBody Address address) {
+    public void addAddress(@RequestBody Address address) {
         addressMapper.insertAddress(address);
+    }
+
+    @PostMapping("/edit")
+    public void editAddress(@RequestBody Address address) {
+        addressMapper.editAddress(address);
+    }
+
+    @PostMapping("/delete")
+    public void deleteAddress(@Param("id") Integer id) {
+        addressMapper.deleteAddress(id);
     }
 }
