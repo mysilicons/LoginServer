@@ -18,5 +18,7 @@ public class Order {
     private String order_time;
     private String server_time;
     private String cur_status;
+    private String username;
+    private String phone;
     private String address;
 }

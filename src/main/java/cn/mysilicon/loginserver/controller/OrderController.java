@@ -33,15 +33,19 @@ public class OrderController {
                       @Param("user_id") Integer user_id) {
         SnowflakeIdGenerator snowflakeIdGenerator = new SnowflakeIdGenerator(18L, 27L);
         long order_number = snowflakeIdGenerator.nextId();
-        System.out.println("server_time = " + server_time);
-        System.out.println("order_number = " + order_number);
-        orderMapper.order(order_number, server_time, service_id, address_id, user_id);
+        Integer merchant_id = orderMapper.getMerchantId(service_id);
+        orderMapper.order(order_number, server_time, service_id, address_id, user_id, merchant_id);
     }
 
+    @GetMapping("/get")
+    public String get(@Param("id") Integer id) {
+        Order order = orderMapper.select(id);
+        return JSON.toJSONString(order);
+    }
 
     @PostMapping("/delete")
     public void delete(@Param("id") Integer id) {
-        orderMapper.delete(id);
+        orderMapper.userdelete(id);
     }
 
     @PostMapping("/finish")

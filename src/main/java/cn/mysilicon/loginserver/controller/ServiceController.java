@@ -6,9 +6,7 @@ import cn.mysilicon.loginserver.mapper.ServiceMapper;
 import com.google.gson.Gson;
 import jakarta.annotation.Resource;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +44,23 @@ public class ServiceController {
         List<Service> serviceList = serviceMapper.selectAll();
         Gson gson = new Gson();
         return gson.toJson(serviceList);
+    }
+
+    @GetMapping("/get")
+    public String getService(@Param("id") Integer id) {
+        Service service = serviceMapper.selectService(id);
+        Gson gson = new Gson();
+        return gson.toJson(service);
+    }
+
+    @PostMapping("/update")
+    public void updateService(@RequestBody String submitService) {
+        Service service = new Gson().fromJson(submitService, Service.class);
+        serviceMapper.updateService(service);
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteService(@Param("id") Integer id) {
+        serviceMapper.deleteService(id);
     }
 }

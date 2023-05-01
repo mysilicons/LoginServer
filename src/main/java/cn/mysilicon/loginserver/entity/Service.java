@@ -12,4 +12,5 @@ public class Service {
     private String content;
     private String price;
     private String city;
+    private Integer merchant_id;
 }

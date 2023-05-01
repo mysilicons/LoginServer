@@ -25,6 +25,13 @@ public class AdressController {
         return gson.toJson(addressesList);
     }
 
+    @RequestMapping("/get")
+    public String getAddressById(@Param("id") Integer id) {
+        Address address = addressMapper.getAddressByAddressId(id);
+        Gson gson = new Gson();
+        return gson.toJson(address);
+    }
+
     @PostMapping("/add")
     public void addAddress(@RequestBody Address address) {
         addressMapper.insertAddress(address);

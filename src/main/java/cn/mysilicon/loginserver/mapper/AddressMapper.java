@@ -24,4 +24,7 @@ public interface AddressMapper {
 
     @Update("update hp_address set uname=#{uname},phone=#{phone},address=#{address} where id=#{id}")
     void editAddress(Address address);
+
+    @Select("select * from hp_address where id=#{id}")
+    Address getAddressByAddressId(Integer id);
 }
