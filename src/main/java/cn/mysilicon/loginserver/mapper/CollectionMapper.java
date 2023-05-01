@@ -35,6 +35,6 @@ public interface CollectionMapper {
             "WHERE hp_service.id = #{service_id};\n")
     void addCollect(Integer user_id, Integer service_id);
 
-    @Delete("DELETE FROM hp_classification WHERE id=#{id}")
+    @Delete("DELETE FROM hp_collection WHERE id=#{id}")
     void deleteCollect(Integer id);
 }
