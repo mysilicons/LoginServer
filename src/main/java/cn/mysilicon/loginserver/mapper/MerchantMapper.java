@@ -37,4 +37,7 @@ public interface MerchantMapper {
 
     @Update("UPDATE hp_orders SET merchant_visible=0 WHERE id=#{id}")
     void merchantdelete(Integer id);
+
+    @Select("SELECT name FROM hp_merchant WHERE id=#{merchantId}")
+    String getConversationId(Integer merchantId);
 }

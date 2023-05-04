@@ -77,4 +77,10 @@ public class MerchantController {
         Service service = JSON.parseObject(service_json, Service.class);
         merchantMapper.release(service.getClassification1(), service.getClassification2(), service.getImage_url(), service.getTitle(), service.getContent(), service.getPrice(), service.getCity(), service.getMerchant_id());
     }
+
+    @GetMapping("/getConversationId")
+    public String getConversationId(@Param("merchant_id") Integer merchant_id) {
+        String conversationId = merchantMapper.getConversationId(merchant_id);
+        return conversationId;
+    }
 }
