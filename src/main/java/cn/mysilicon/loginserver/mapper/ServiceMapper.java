@@ -1,6 +1,5 @@
 package cn.mysilicon.loginserver.mapper;
 
-import cn.mysilicon.loginserver.entity.Detail;
 import cn.mysilicon.loginserver.entity.Service;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
@@ -15,7 +14,7 @@ public interface ServiceMapper {
     List<Service> selectByClassification2(Integer classification2);
 
     @Select("SELECT * FROM hp_service WHERE id=#{id}")
-    Detail selectById(Integer id);
+    Service selectById(Integer id);
 
     @Select("SELECT * FROM hp_service")
     List<Service> selectAll();

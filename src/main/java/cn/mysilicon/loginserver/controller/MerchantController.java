@@ -1,5 +1,6 @@
 package cn.mysilicon.loginserver.controller;
 
+import cn.mysilicon.loginserver.entity.Comment;
 import cn.mysilicon.loginserver.entity.Order;
 import cn.mysilicon.loginserver.entity.Service;
 import cn.mysilicon.loginserver.mapper.MerchantMapper;
@@ -82,5 +83,11 @@ public class MerchantController {
     public String getConversationId(@Param("merchant_id") Integer merchant_id) {
         String conversationId = merchantMapper.getConversationId(merchant_id);
         return conversationId;
+    }
+
+    @GetMapping("/getMerchantComment")
+    public String getMerchantComment(@Param("merchant_id") Integer merchant_id) {
+        List<Comment> commentList = merchantMapper.getMerchantComment(merchant_id);
+        return JSON.toJSONString(commentList);
     }
 }

@@ -1,5 +1,6 @@
 package cn.mysilicon.loginserver.mapper;
 
+import cn.mysilicon.loginserver.entity.Comment;
 import cn.mysilicon.loginserver.entity.Order;
 import cn.mysilicon.loginserver.entity.Service;
 import org.apache.ibatis.annotations.Insert;
@@ -40,4 +41,7 @@ public interface MerchantMapper {
 
     @Select("SELECT name FROM hp_merchant WHERE id=#{merchantId}")
     String getConversationId(Integer merchantId);
+
+    @Select("SELECT * FROM hp_comment WHERE merchant_id=#{merchantId}")
+    List<Comment> getMerchantComment(Integer merchantId);
 }

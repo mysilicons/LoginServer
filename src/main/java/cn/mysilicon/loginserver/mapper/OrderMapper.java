@@ -52,4 +52,7 @@ public interface OrderMapper {
 
     @Select("SELECT * FROM hp_orders WHERE id=#{id}")
     Order select(Integer id);
+
+    @Update("UPDATE hp_orders SET cur_status='已取消' WHERE id=#{id}")
+    void cancel(Integer id);
 }

@@ -52,4 +52,9 @@ public class OrderController {
     public void finish(@Param("id") Integer id) {
         orderMapper.finish(id);
     }
+
+    @PostMapping("/cancel")
+    public void cancel(@Param("id") Integer id) {
+        orderMapper.cancel(id);
+    }
 }

@@ -1,6 +1,5 @@
 package cn.mysilicon.loginserver.controller;
 
-import cn.mysilicon.loginserver.entity.Detail;
 import cn.mysilicon.loginserver.entity.Service;
 import cn.mysilicon.loginserver.mapper.ServiceMapper;
 import com.google.gson.Gson;
@@ -34,9 +33,9 @@ public class ServiceController {
 
     @RequestMapping("/detail")
     public String getServiceDetail(@Param("id") Integer id) {
-        Detail detail = serviceMapper.selectById(id);
+        Service service = serviceMapper.selectById(id);
         Gson gson = new Gson();
-        return gson.toJson(detail);
+        return gson.toJson(service);
     }
 
     @GetMapping("/list")
