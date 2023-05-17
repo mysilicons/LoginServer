@@ -15,6 +15,7 @@
 * Maven3.8.1
 * MySQL8.0.25
 * IDEA2023.1.1
+* SpringBoot3.0.4
 
 ## 后台运行方法
 
